@@ -194,6 +194,7 @@ class FakeRKHSConvNet(nn.Module):
             for i in range(n_input):
                 eye_mask[i, i, 0, 0] = 1
             self.shortcut.weight.data.uniform_(-0.01, 0.01)
+            eye_mask = torch.tensor(eye_mask, dtype=torch.bool)
             self.shortcut.weight.data.masked_fill_(torch.tensor(eye_mask), 1.)
         return
 
