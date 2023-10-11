@@ -81,7 +81,7 @@ if __name__ == '__main__':
     model_dict = model.state_dict()
 
     if args.init_weights is not None:
-        model_detail = torch.load(args.init_weights)
+        model_detail = torch.load(args.init_weights, map_location=torch.device('cpu'))
         if 'params' in model_detail:
             pretrained_dict = model_detail['params']
             # remove weights for FC
